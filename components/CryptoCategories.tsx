@@ -6,7 +6,7 @@ export const CryptoCategories = () => {
   return (
     <ScrollView horizontal style={styles.container}>
       {CRYPTO_CATEGORIES.map(category => (
-        <View style={styles.item}>
+        <View style={styles.item} key={category.id}>
           <Text style={styles.itemText}>{category.title}</Text>
         </View>
       ))}
