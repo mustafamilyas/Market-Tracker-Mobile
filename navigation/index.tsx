@@ -14,10 +14,13 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import TabHomeScreen from '../screens/TabHomeScreen';
+import TabDiscoverScreen from '../screens/TabDiscoverScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import TabMarketScreen from '../screens/TabMarketScreen';
+import TabWalletScreen from '../screens/TabWalletScreen';
+import TabAccountScreen from '../screens/TabAccountScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -58,14 +61,14 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
+        name="Home"
+        component={TabHomeScreen}
+        options={({ navigation }: RootTabScreenProps<'Home'>) => ({
           title: 'Tab One',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
@@ -85,10 +88,34 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoScreen}
+        name="Discover"
+        component={TabDiscoverScreen}
         options={{
-          title: 'Tab Two',
+          title: 'Discover',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Market"
+        component={TabMarketScreen}
+        options={{
+          title: 'Market',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Wallet"
+        component={TabWalletScreen}
+        options={{
+          title: 'Wallet',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Account"
+        component={TabAccountScreen}
+        options={{
+          title: 'Account',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
