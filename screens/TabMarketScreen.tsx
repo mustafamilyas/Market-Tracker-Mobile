@@ -1,5 +1,6 @@
 import { AntDesign, Feather } from '@expo/vector-icons'; 
 import { Image, StyleSheet } from 'react-native';
+import { CryptoCategories } from '../components/CryptoCategories';
 import { HeaderScreen } from '../components/HeaderScreen';
 
 import { Text, View } from '../components/Themed';
@@ -16,6 +17,8 @@ export default function TabDiscoverScreen() {
           </>
         }
       />
+      <CryptoCategories />
+      <View style={styles.content}><Text>test</Text></View>
     </View>
   );
 }
@@ -28,5 +31,7 @@ const styles = StyleSheet.create({
   headerActionItem: {
     marginRight: 10,
   },
-
+  content: {
+    flex: 1
+  }
 });
