@@ -1,4 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
+import { StyleSheet, StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import useCachedResources from './hooks/useCachedResources';
@@ -13,10 +14,17 @@ export default function App() {
     return null;
   } else {
     return (
-      <SafeAreaProvider>
+      <SafeAreaProvider style={styles.safeArea}>
         <Navigation colorScheme={colorScheme} />
-        <StatusBar />
+        <ExpoStatusBar />
       </SafeAreaProvider>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight,
+  },
+});

@@ -16,11 +16,11 @@ import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import TabHomeScreen from '../screens/TabHomeScreen';
 import TabDiscoverScreen from '../screens/TabDiscoverScreen';
-import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
-import LinkingConfiguration from './LinkingConfiguration';
 import TabMarketScreen from '../screens/TabMarketScreen';
 import TabWalletScreen from '../screens/TabWalletScreen';
 import TabAccountScreen from '../screens/TabAccountScreen';
+import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
+import LinkingConfiguration from './LinkingConfiguration';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -99,6 +99,7 @@ function BottomTabNavigator() {
         name="Market"
         component={TabMarketScreen}
         options={{
+          headerShown: false,
           title: 'Market',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}

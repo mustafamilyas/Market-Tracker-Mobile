@@ -1,14 +1,21 @@
+import { AntDesign, Feather } from '@expo/vector-icons'; 
 import { Image, StyleSheet } from 'react-native';
+import { HeaderScreen } from '../components/HeaderScreen';
 
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 
 export default function TabDiscoverScreen() {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text>Market</Text>
-      </View>
+      <HeaderScreen
+        title="Market"
+        headerAction={
+          <>
+            <AntDesign name="staro" size={24} color="black" style={styles.headerActionItem} />
+            <Feather name="search" size={24} color="black" />
+          </>
+        }
+      />
     </View>
   );
 }
@@ -16,10 +23,10 @@ export default function TabDiscoverScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    // backgroundColor: 'yellow',
   },
-  header: {
+  headerActionItem: {
+    marginRight: 10,
+  },
 
-  }
 });
