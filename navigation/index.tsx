@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from '@expo/vector-icons';
+import { AntDesign, Entypo, FontAwesome, Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -70,7 +70,7 @@ function BottomTabNavigator() {
         component={TabHomeScreen}
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
           title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color={color} />,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('Modal')}
@@ -92,7 +92,7 @@ function BottomTabNavigator() {
         component={TabDiscoverScreen}
         options={{
           title: 'Discover',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="newspaper-outline" size={24} color={color} />,
         }}
       />
       <BottomTab.Screen
@@ -101,7 +101,7 @@ function BottomTabNavigator() {
         options={{
           headerShown: false,
           title: 'Market',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <Entypo name="bar-graph" size={24} color={color} />,
         }}
       />
       <BottomTab.Screen
@@ -109,7 +109,7 @@ function BottomTabNavigator() {
         component={TabWalletScreen}
         options={{
           title: 'Wallet',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="wallet-outline" size={24} color={color} />,
         }}
       />
       <BottomTab.Screen
@@ -117,7 +117,7 @@ function BottomTabNavigator() {
         component={TabAccountScreen}
         options={{
           title: 'Account',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <AntDesign name="user" size={24} color={color} />,
         }}
       />
     </BottomTab.Navigator>
