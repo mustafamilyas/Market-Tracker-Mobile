@@ -70,7 +70,7 @@ function BottomTabNavigator() {
         component={TabHomeScreen}
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
           title: 'Tab One',
-          tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color={color} />,
+          tabBarIcon: ({ color }) => <AntDesign name="home" style={{ marginBottom: -5 }} size={24} color={color} />,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('Modal')}
@@ -92,7 +92,7 @@ function BottomTabNavigator() {
         component={TabDiscoverScreen}
         options={{
           title: 'Discover',
-          tabBarIcon: ({ color }) => <Ionicons name="newspaper-outline" size={24} color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="newspaper-outline" style={{ marginBottom: -5 }} size={24} color={color} />,
         }}
       />
       <BottomTab.Screen
@@ -101,7 +101,7 @@ function BottomTabNavigator() {
         options={{
           headerShown: false,
           title: 'Market',
-          tabBarIcon: ({ color }) => <Entypo name="bar-graph" size={24} color={color} />,
+          tabBarIcon: ({ color }) => <Entypo name="bar-graph" style={{ marginBottom: -5 }} size={24} color={color} />,
         }}
       />
       <BottomTab.Screen
@@ -109,7 +109,7 @@ function BottomTabNavigator() {
         component={TabWalletScreen}
         options={{
           title: 'Wallet',
-          tabBarIcon: ({ color }) => <Ionicons name="wallet-outline" size={24} color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="wallet-outline" style={{ marginBottom: -5 }} size={24} color={color} />,
         }}
       />
       <BottomTab.Screen
@@ -117,19 +117,9 @@ function BottomTabNavigator() {
         component={TabAccountScreen}
         options={{
           title: 'Account',
-          tabBarIcon: ({ color }) => <AntDesign name="user" size={24} color={color} />,
+          tabBarIcon: ({ color }) => <AntDesign name="user" style={{ marginBottom: -5 }} size={24} color={color} />,
         }}
       />
     </BottomTab.Navigator>
   );
-}
-
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
 }
