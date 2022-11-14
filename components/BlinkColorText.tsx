@@ -23,7 +23,7 @@ export function BlinkColorText(props: any){
         }
       ),
     ]).start();
-  }, [blinkColorAnim, props.keyChange])
+  }, [blinkColorAnim])
 
   return (
     <Animated.Text                 // Special animatable View

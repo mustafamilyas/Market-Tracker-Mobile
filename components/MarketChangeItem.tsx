@@ -36,7 +36,7 @@ export const MarketChangeItem: FC<Props> = ({ imageURI, backgroundColor, name, c
         </View>
       </View>
       <View style={styles.contentRight}>
-        <BlinkColorText style={styles.price} color={priceChangesColor} keyChange={price}>
+        <BlinkColorText style={styles.price} color={priceChangesColor} key={price}>
           {formatCurrency(price)}
         </BlinkColorText>
         <View style={styles.priceChanges}>
