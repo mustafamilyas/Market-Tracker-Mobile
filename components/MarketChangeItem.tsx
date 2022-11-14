@@ -1,26 +1,34 @@
+import { AntDesign } from '@expo/vector-icons';
 import React, {FC} from 'react'
 import { View, Text, Image, StyleSheet } from 'react-native';
 import {SvgUri} from 'react-native-svg'
 import { formatCurrency } from '../utils/currency';
 
 interface Props {
-  image: string;
+  imageURI: string;
+  backgroundColor: string;
   name: string;
   code: string;
   price: number;
   priceChanges: number;
 }
 
-export const MarketChangeItem: FC<Props> = ({ image, name, code, price, priceChanges }) => {
+export const MarketChangeItem: FC<Props> = ({ imageURI, backgroundColor, name, code, price, priceChanges }) => {
+  const priceChangesIndicator = priceChanges < 0 ?
+    (<AntDesign name="caretdown" size={24} color="red" />) :
+    priceChanges > 0 ?
+      (<AntDesign name="caretup" size={24} color="green" />) : null;
+  const priceChangesColor = priceChanges < 0 ? 'red' : priceChanges > 0 ? 'green' : 'black';
+
   return (
     <View style={styles.container}>
       <View style={styles.contentLeft}>
-        {Boolean(image) ? <SvgUri
+        {Boolean(imageURI) ? <SvgUri
           width="30"
           height="30"
-          uri={image}
-          style={styles.logo}
-        />: image}
+          uri={imageURI}
+          style={[styles.logo, backgroundColor ? { color: backgroundColor } as any : undefined]}
+        />: imageURI}
         <View style={styles.description}>
           <Text style={styles.name}>{ name}</Text>
           <Text style={styles.code}>{ code}</Text>
@@ -28,7 +36,10 @@ export const MarketChangeItem: FC<Props> = ({ image, name, code, price, priceCha
       </View>
       <View style={styles.contentRight}>
         <Text style={styles.price}>{formatCurrency(price)}</Text>
-        <Text style={styles.priceChanges}>{ priceChanges}</Text>
+        <View style={styles.priceChanges}>
+          {priceChangesIndicator}
+          <Text style={[styles.priceChangesText, {color: priceChangesColor}]}>{ priceChanges }%</Text>
+        </View>
       </View>
     </View>
   )
@@ -51,7 +62,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 30,
     height: 30,
-    marginRight: 10
+    marginRight: 10,
   },
   description: {
 
@@ -71,6 +82,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   priceChanges: {
-    fontSize: 16
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  priceChangesText: {
+    fontSize: 16,
+    marginLeft: 5,
+    fontWeight: 'bold',
   },
 })

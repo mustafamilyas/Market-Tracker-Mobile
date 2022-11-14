@@ -56,7 +56,8 @@ export default function TabDiscoverScreen() {
             <MarketChangeItem
               name={item.name ?? ''}
               code={item.currencySymbol ?? ''}
-              image={item.logo ?? "https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/ruby.svg"} 
+              imageURI={item.logo ?? "https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/ruby.svg"} 
+              backgroundColor={item.color ?? '#000'}
               price={parseInt(item.latestPrice)}
               priceChanges={item.day ? parseFloat(item.day) : 0}
             />
