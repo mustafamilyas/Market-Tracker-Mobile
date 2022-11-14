@@ -7,10 +7,12 @@ import { CryptoCategories } from '../components/CryptoCategories';
 import { HeaderScreen } from '../components/HeaderScreen';
 
 import { Text, View } from '../components/Themed';
+import { useGetSupportedCurrenciesQuery } from '../hooks/useGetSupportedCurrenciesQuery';
 
 export default function TabDiscoverScreen() {
   const [sortBy, setSortBy] = useState();
-
+  const currencies = useGetSupportedCurrenciesQuery();
+  console.log('currencies', currencies)
   return (
     <View style={styles.container}>
       <HeaderScreen
