@@ -1,39 +1,36 @@
-import React, {FC} from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React, { FC } from "react";
+import { View, Text, StyleSheet } from "react-native";
 
 interface HeaderScreenProps {
-  title: string,
-  headerAction?: React.ReactNode
+  title: string;
+  headerAction?: React.ReactNode;
 }
 
-export const HeaderScreen : FC<HeaderScreenProps> = ({title, headerAction}) => {
+export const HeaderScreen: FC<HeaderScreenProps> = ({
+  title,
+  headerAction,
+}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Market</Text>
-      {
-        headerAction ? (
-          <View style={styles.action}>
-            {headerAction}
-          </View>
-        ) : null
-      }
+      <Text style={styles.title}>{title}</Text>
+      {headerAction ? <View style={styles.action}>{headerAction}</View> : null}
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 20,
     paddingHorizontal: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   action: {
-    flexDirection: 'row',    
+    flexDirection: "row",
   },
   title: {
     fontSize: 25,
-    fontWeight: 'bold'
-  }
+    fontWeight: "bold",
+  },
 });

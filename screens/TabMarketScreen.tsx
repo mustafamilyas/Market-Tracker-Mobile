@@ -1,5 +1,5 @@
-import { AntDesign, Feather } from '@expo/vector-icons'; 
-import SelectDropdown from 'react-native-select-dropdown'
+import { AntDesign, Feather } from '@expo/vector-icons';
+import SelectDropdown from 'react-native-select-dropdown';
 import { useState } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
@@ -19,7 +19,12 @@ export default function TabDiscoverScreen() {
         title="Market"
         headerAction={
           <>
-            <AntDesign name="staro" size={24} color="black" style={styles.headerActionItem} />
+            <AntDesign
+              name="staro"
+              size={24}
+              color="black"
+              style={styles.headerActionItem}
+            />
             <Feather name="search" size={24} color="black" />
           </>
         }
@@ -32,20 +37,22 @@ export default function TabDiscoverScreen() {
           renderCustomizedButtonChild={(selectedItem) => {
             return (
               <View style={styles.filterDropdown}>
-                <Text style={styles.filterDropdownText}>{selectedItem || 'All'}</Text>
+                <Text style={styles.filterDropdownText}>
+                  {selectedItem || 'All'}
+                </Text>
                 <AntDesign name="down" size={12} color="black" />
               </View>
             );
           }}
           buttonStyle={styles.filterButton}
           onSelect={(selectedItem, index) => {
-            setSortBy(selectedItem)
+            setSortBy(selectedItem);
           }}
           buttonTextAfterSelection={(selectedItem, index) => {
-            return selectedItem
+            return selectedItem;
           }}
           rowTextForSelection={(item, index) => {
-            return item
+            return item;
           }}
         />
       </View>
@@ -56,7 +63,10 @@ export default function TabDiscoverScreen() {
             <MarketChangeItem
               name={item.name ?? ''}
               code={item.currencySymbol ?? ''}
-              imageURI={item.logo ?? "https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/ruby.svg"} 
+              imageURI={
+                item.logo ??
+                'https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/ruby.svg'
+              }
               backgroundColor={item.color ?? '#000'}
               price={parseInt(item.latestPrice)}
               priceChanges={item.day ? parseFloat(item.day) : 0}
@@ -77,7 +87,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   content: {
-    flex: 1
+    flex: 1,
   },
   filter: {
     flexDirection: 'row',
@@ -90,7 +100,7 @@ const styles = StyleSheet.create({
   },
   filterButton: {
     backgroundColor: 'white',
-    padding: 0
+    padding: 0,
   },
   filterDropdown: {
     flexDirection: 'row',
@@ -101,5 +111,5 @@ const styles = StyleSheet.create({
     marginRight: 5,
     fontSize: 15,
     fontWeight: 'bold',
-  }
+  },
 });

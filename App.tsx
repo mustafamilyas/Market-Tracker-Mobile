@@ -1,17 +1,14 @@
-import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, StatusBar } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import {
-  QueryClient,
-  QueryClientProvider,
-} from 'react-query'
+import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import React from "react";
+import { StyleSheet, StatusBar } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { QueryClient, QueryClientProvider } from "react-query";
 
-import useCachedResources from './hooks/useCachedResources';
-import useColorScheme from './hooks/useColorScheme';
-import Navigation from './navigation';
+import useCachedResources from "./hooks/useCachedResources";
+import useColorScheme from "./hooks/useColorScheme";
+import Navigation from "./navigation";
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 export default function App() {
   const isLoadingComplete = useCachedResources();

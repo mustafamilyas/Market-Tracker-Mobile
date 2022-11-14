@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { useGetPriceChangesQuery } from "./useGetPriceChangesQuery";
-import { useGetSupportedCurrenciesQuery } from "./useGetSupportedCurrenciesQuery";
+import { useEffect } from 'react';
+import { useGetPriceChangesQuery } from './useGetPriceChangesQuery';
+import { useGetSupportedCurrenciesQuery } from './useGetSupportedCurrenciesQuery';
 
 export function useGetMarketChanges() {
   const currencies = useGetSupportedCurrenciesQuery();
@@ -8,20 +8,21 @@ export function useGetMarketChanges() {
   const marketPriceChanges = priceChanges.data?.map((pc) => {
     return {
       ...pc,
-      ...currencies.data?.find((c) => c.currencySymbol.toLowerCase() === pc.pair.split('/')[0])
-    }
+      ...currencies.data?.find(
+        (c) => c.currencySymbol.toLowerCase() === pc.pair.split('/')[0],
+      ),
+    };
   });
 
   useEffect(() => {
     const interval = setInterval(() => {
       priceChanges.refetch();
     }, 1000);
-  
+
     return () => {
       clearInterval(interval);
-    }
-  }, [])
-  
+    };
+  }, []);
 
-  return marketPriceChanges ?? []; 
+  return marketPriceChanges ?? [];
 }

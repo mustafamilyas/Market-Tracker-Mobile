@@ -5,4 +5,4 @@ export function useGetPriceChangesQuery() {
   return useQuery('priceChanges', async () => {
     return await CryptoAPI.getPriceChanges();
   });
-};
+}

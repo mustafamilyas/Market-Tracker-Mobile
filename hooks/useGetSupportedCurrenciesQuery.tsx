@@ -4,6 +4,6 @@ import { SupportedCurrencyGroup } from '../api/interfaces';
 
 export function useGetSupportedCurrenciesQuery() {
   return useQuery('supportedCurrencies', async () => {
-    return await CryptoAPI.getSupportedCurrencies()
-  })
-};
+    return await CryptoAPI.getSupportedCurrencies();
+  });
+}

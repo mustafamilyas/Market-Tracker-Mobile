@@ -17,10 +17,10 @@ export interface SupportedCurrencyGroup {
   logo: string;
   decimal_point: number;
   listingDate: string;
-  wallet: SupportedCurrency[]
+  wallet: SupportedCurrency[];
 }
 
-export interface SupportedCurrency { 
+export interface SupportedCurrency {
   currencyGroup: string;
   tokenSymbol: string;
   decimal_point: number;
@@ -29,5 +29,5 @@ export interface SupportedCurrency {
   explorer: string;
   listingDate: string;
   blockchainName: string;
-  logo: string
+  logo: string;
 }

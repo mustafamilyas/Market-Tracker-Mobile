@@ -5,7 +5,11 @@
  */
 import { AntDesign, Entypo, FontAwesome, Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName, Pressable } from 'react-native';
@@ -19,14 +23,23 @@ import TabDiscoverScreen from '../screens/TabDiscoverScreen';
 import TabMarketScreen from '../screens/TabMarketScreen';
 import TabWalletScreen from '../screens/TabWalletScreen';
 import TabAccountScreen from '../screens/TabAccountScreen';
-import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
+import {
+  RootStackParamList,
+  RootTabParamList,
+  RootTabScreenProps,
+} from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+export default function Navigation({
+  colorScheme,
+}: {
+  colorScheme: ColorSchemeName;
+}) {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+    >
       <RootNavigator />
     </NavigationContainer>
   );
@@ -41,8 +54,16 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen
+        name="Root"
+        component={BottomTabNavigator}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="NotFound"
+        component={NotFoundScreen}
+        options={{ title: 'Oops!' }}
+      />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
@@ -64,19 +85,28 @@ function BottomTabNavigator() {
       initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
-      }}>
+      }}
+    >
       <BottomTab.Screen
         name="Home"
         component={TabHomeScreen}
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
           title: 'Tab One',
-          tabBarIcon: ({ color }) => <AntDesign name="home" style={{ marginBottom: -5 }} size={24} color={color} />,
+          tabBarIcon: ({ color }) => (
+            <AntDesign
+              name="home"
+              style={{ marginBottom: -5 }}
+              size={24}
+              color={color}
+            />
+          ),
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('Modal')}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
-              })}>
+              })}
+            >
               <FontAwesome
                 name="info-circle"
                 size={25}
@@ -92,7 +122,14 @@ function BottomTabNavigator() {
         component={TabDiscoverScreen}
         options={{
           title: 'Discover',
-          tabBarIcon: ({ color }) => <Ionicons name="newspaper-outline" style={{ marginBottom: -5 }} size={24} color={color} />,
+          tabBarIcon: ({ color }) => (
+            <Ionicons
+              name="newspaper-outline"
+              style={{ marginBottom: -5 }}
+              size={24}
+              color={color}
+            />
+          ),
         }}
       />
       <BottomTab.Screen
@@ -101,7 +138,14 @@ function BottomTabNavigator() {
         options={{
           headerShown: false,
           title: 'Market',
-          tabBarIcon: ({ color }) => <Entypo name="bar-graph" style={{ marginBottom: -5 }} size={24} color={color} />,
+          tabBarIcon: ({ color }) => (
+            <Entypo
+              name="bar-graph"
+              style={{ marginBottom: -5 }}
+              size={24}
+              color={color}
+            />
+          ),
         }}
       />
       <BottomTab.Screen
@@ -109,7 +153,14 @@ function BottomTabNavigator() {
         component={TabWalletScreen}
         options={{
           title: 'Wallet',
-          tabBarIcon: ({ color }) => <Ionicons name="wallet-outline" style={{ marginBottom: -5 }} size={24} color={color} />,
+          tabBarIcon: ({ color }) => (
+            <Ionicons
+              name="wallet-outline"
+              style={{ marginBottom: -5 }}
+              size={24}
+              color={color}
+            />
+          ),
         }}
       />
       <BottomTab.Screen
@@ -117,7 +168,14 @@ function BottomTabNavigator() {
         component={TabAccountScreen}
         options={{
           title: 'Account',
-          tabBarIcon: ({ color }) => <AntDesign name="user" style={{ marginBottom: -5 }} size={24} color={color} />,
+          tabBarIcon: ({ color }) => (
+            <AntDesign
+              name="user"
+              style={{ marginBottom: -5 }}
+              size={24}
+              color={color}
+            />
+          ),
         }}
       />
     </BottomTab.Navigator>

@@ -6,43 +6,43 @@ interface Category {
 
 export const CRYPTO_CATEGORIES: Category[] = [
   {
-    id: 'MarketNew',
-    title: 'New',
+    id: "MarketNew",
+    title: "New",
   },
   {
-    id: 'MarketDeFi',
-    title: 'DeFi',
+    id: "MarketDeFi",
+    title: "DeFi",
   },
   {
-    id: 'MarketNFT',
-    title: 'NFT/Gaming',
+    id: "MarketNFT",
+    title: "NFT/Gaming",
   },
   {
-    id: 'MarketCEX',
-    title: 'CEX',
+    id: "MarketCEX",
+    title: "CEX",
   },
   {
-    id: 'MarketDEX',
-    title: 'DEX',
+    id: "MarketDEX",
+    title: "DEX",
   },
   {
-    id: 'MarketLayer1',
-    title: 'Layer-1',
+    id: "MarketLayer1",
+    title: "Layer-1",
   },
   {
-    id: 'MarketInfrastructure',
-    title: 'Infrastructure',
+    id: "MarketInfrastructure",
+    title: "Infrastructure",
   },
   {
-    id: 'MarketLending',
-    title: 'Lending',
+    id: "MarketLending",
+    title: "Lending",
   },
   {
-    id: 'MarketLayer2',
-    title: 'Layer-2',
+    id: "MarketLayer2",
+    title: "Layer-2",
   },
   {
-    id: 'MarketStablecoin',
-    title: 'Stablecoin',
+    id: "MarketStablecoin",
+    title: "Stablecoin",
   },
-]
+];
