@@ -3,6 +3,7 @@ import React, {FC} from 'react'
 import { View, Text, Image, StyleSheet } from 'react-native';
 import {SvgUri} from 'react-native-svg'
 import { formatCurrency } from '../utils/currency';
+import { BlinkColorText } from './BlinkColorText';
 
 interface Props {
   imageURI: string;
@@ -35,7 +36,9 @@ export const MarketChangeItem: FC<Props> = ({ imageURI, backgroundColor, name, c
         </View>
       </View>
       <View style={styles.contentRight}>
-        <Text style={styles.price}>{formatCurrency(price)}</Text>
+        <BlinkColorText style={styles.price} color={priceChangesColor} keyChange={price}>
+          {formatCurrency(price)}
+        </BlinkColorText>
         <View style={styles.priceChanges}>
           {priceChangesIndicator}
           <Text style={[styles.priceChangesText, {color: priceChangesColor}]}>{ priceChanges }%</Text>
