@@ -1,18 +1,18 @@
 import { AntDesign, Feather } from '@expo/vector-icons'; 
 import SelectDropdown from 'react-native-select-dropdown'
 import { useState } from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 
 import { CryptoCategories } from '../components/CryptoCategories';
 import { HeaderScreen } from '../components/HeaderScreen';
 
 import { Text, View } from '../components/Themed';
-import { useGetSupportedCurrenciesQuery } from '../hooks/useGetSupportedCurrenciesQuery';
+import { useGetMarketChanges } from '../hooks/useGetMarketChanges';
+import { MarketChangeItem } from '../components/MarketChangeItem';
 
 export default function TabDiscoverScreen() {
   const [sortBy, setSortBy] = useState();
-  const currencies = useGetSupportedCurrenciesQuery();
-  console.log('currencies', currencies)
+  const marketChanges = useGetMarketChanges();
   return (
     <View style={styles.container}>
       <HeaderScreen
@@ -29,7 +29,7 @@ export default function TabDiscoverScreen() {
         <Text style={styles.filterText}>Sort by</Text>
         <SelectDropdown
           data={['test', 'test2']}
-          renderCustomizedButtonChild={(selectedItem, defaultTextContainer) => {
+          renderCustomizedButtonChild={(selectedItem) => {
             return (
               <View style={styles.filterDropdown}>
                 <Text style={styles.filterDropdownText}>{selectedItem || 'All'}</Text>
@@ -49,7 +49,21 @@ export default function TabDiscoverScreen() {
           }}
         />
       </View>
-      <View style={styles.content}><Text>test</Text></View>
+      <View style={styles.content}>
+        <FlatList
+          data={marketChanges}
+          renderItem={({ item }) => (
+            <MarketChangeItem
+              name={item.name ?? ''}
+              code={item.currencySymbol ?? ''}
+              image={item.logo ?? "https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/ruby.svg"} 
+              price={parseInt(item.latestPrice)}
+              priceChanges={item.day ? parseFloat(item.day) : 0}
+            />
+          )}
+          keyExtractor={(item, idx) => item.name ?? idx.toString()}
+        />
+      </View>
     </View>
   );
 }
