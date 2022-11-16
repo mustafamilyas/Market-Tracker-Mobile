@@ -1,4 +1,4 @@
-# Clone Market Tracker Mobile app
+# Market Tracker Mobile app
 this apps build using Pintu mobile apps as reference
 
 ## How to run locally
