@@ -18,8 +18,8 @@ npm start
 ![alt text](./qr%20code.PNG)
 
 ## TODO
-[ ] complete feature similar to Pintu
-  [ ] search
-  [ ] filter
-  [ ] other pages
-[ ] add skeleton on market page, to enhance UX
+- [ ] complete feature similar to Pintu
+  - [ ] search
+  - [ ] filter
+  - [ ] other pages
+- [ ] add skeleton on market page, to enhance UX
