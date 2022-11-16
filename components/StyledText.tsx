@@ -1,7 +1,9 @@
-import { Text, TextProps } from "./Themed";
+import React from 'react';
+import { Text, TextProps } from './Themed';
 
 export function MonoText(props: TextProps) {
   return (
-    <Text {...props} style={[props.style, { fontFamily: "space-mono" }]} />
+    // eslint-disable-next-line react-native/no-inline-styles
+    <Text {...props} style={[props.style, { fontFamily: 'space-mono' }]} />
   );
 }

@@ -1,5 +1,5 @@
-import React, { FC } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { FC } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
 interface HeaderScreenProps {
   title: string;
@@ -22,15 +22,15 @@ const styles = StyleSheet.create({
   container: {
     paddingVertical: 20,
     paddingHorizontal: 10,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   action: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   title: {
     fontSize: 25,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 });

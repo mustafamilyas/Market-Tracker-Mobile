@@ -1,17 +1,18 @@
 import { AntDesign, Feather } from '@expo/vector-icons';
 import SelectDropdown from 'react-native-select-dropdown';
-import { useState } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { FlatList, Pressable, StyleSheet } from 'react-native';
 
 import { CryptoCategories } from '../components/CryptoCategories';
 import { HeaderScreen } from '../components/HeaderScreen';
-
 import { Text, View } from '../components/Themed';
 import { useGetMarketChanges } from '../hooks/useGetMarketChanges';
 import { MarketChangeItem } from '../components/MarketChangeItem';
+import { showFeatureInProgress } from '../utils/toast';
+import { AVAILABLE_CRYPTO_FILTERS, FilterCrypto } from '../constants/Filter';
 
 export default function TabDiscoverScreen() {
-  const [sortBy, setSortBy] = useState();
+  const [, setSortBy] = useState();
   const marketChanges = useGetMarketChanges();
   return (
     <View style={styles.container}>
@@ -19,13 +20,27 @@ export default function TabDiscoverScreen() {
         title="Market"
         headerAction={
           <>
-            <AntDesign
-              name="staro"
-              size={24}
-              color="black"
-              style={styles.headerActionItem}
-            />
-            <Feather name="search" size={24} color="black" />
+            <Pressable
+              style={({ pressed }) => ({
+                opacity: pressed ? 0.5 : 1,
+              })}
+              onPress={showFeatureInProgress}
+            >
+              <AntDesign
+                name="staro"
+                size={24}
+                color="black"
+                style={styles.headerActionItem}
+              />
+            </Pressable>
+            <Pressable
+              style={({ pressed }) => ({
+                opacity: pressed ? 0.5 : 1,
+              })}
+              onPress={showFeatureInProgress}
+            >
+              <Feather name="search" size={24} color="black" />
+            </Pressable>
           </>
         }
       />
@@ -33,25 +48,24 @@ export default function TabDiscoverScreen() {
       <View style={styles.filter}>
         <Text style={styles.filterText}>Sort by</Text>
         <SelectDropdown
-          data={['test', 'test2']}
+          data={AVAILABLE_CRYPTO_FILTERS}
           renderCustomizedButtonChild={(selectedItem) => {
             return (
               <View style={styles.filterDropdown}>
-                <Text style={styles.filterDropdownText}>
-                  {selectedItem || 'All'}
-                </Text>
+                <Text style={styles.filterDropdownText}>{selectedItem}</Text>
                 <AntDesign name="down" size={12} color="black" />
               </View>
             );
           }}
+          defaultValue={FilterCrypto.DEFAULT}
           buttonStyle={styles.filterButton}
-          onSelect={(selectedItem, index) => {
+          onSelect={(selectedItem) => {
             setSortBy(selectedItem);
           }}
-          buttonTextAfterSelection={(selectedItem, index) => {
+          buttonTextAfterSelection={(selectedItem) => {
             return selectedItem;
           }}
-          rowTextForSelection={(item, index) => {
+          rowTextForSelection={(item) => {
             return item;
           }}
         />

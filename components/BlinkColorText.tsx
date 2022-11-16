@@ -1,8 +1,8 @@
-import React, { useRef, useEffect } from "react";
-import { Animated } from "react-native";
+import React, { useRef, useEffect } from 'react';
+import { Animated } from 'react-native';
 
 export function BlinkColorText(props: any) {
-  const blinkColorAnim = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
+  const blinkColorAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     Animated.sequence([
@@ -25,7 +25,7 @@ export function BlinkColorText(props: any) {
         ...props.style,
         color: blinkColorAnim.interpolate({
           inputRange: [0, 1],
-          outputRange: ["#000", props.color],
+          outputRange: ['#000', props.color],
         }),
       }}
     >
